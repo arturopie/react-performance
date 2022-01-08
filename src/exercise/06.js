@@ -94,10 +94,18 @@ function Grid() {
 }
 Grid = React.memo(Grid)
 
-function Cell({row, column}) {
+function withStateSlice(Component, mapStateToProps) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const state = useAppState()
-  const cell = state.grid[row][column]
-  return <CellImpl row={row} column={column} cell={cell} />
+  return <Component {...mapStateToProps(state)} />
+}
+
+function Cell({row, column}) {
+  return withStateSlice(CellImpl, state => ({
+    cell: state.grid[row][column],
+    row,
+    column,
+  }))
 }
 
 function CellImpl({row, column, cell}) {

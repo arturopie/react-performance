@@ -101,6 +101,7 @@ function Grid() {
     />
   )
 }
+
 // 💣 remove memoization. It's not needed!
 Grid = React.memo(Grid)
 
@@ -125,6 +126,7 @@ function Cell({row, column}) {
     </button>
   )
 }
+
 // 🦉 notice we don't need to bother memoizing any of the components!!
 // 💣 remove memoization
 Cell = React.memo(Cell)
@@ -155,6 +157,7 @@ function DogNameInput() {
     </form>
   )
 }
+
 function App() {
   const forceRerender = useForceRerender()
   return (
